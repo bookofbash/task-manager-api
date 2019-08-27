@@ -8,8 +8,8 @@ var transporter = nodemailer.createTransport({
   }
 });
 
-const sendWelcomeEmail = (email, name) =>{
-    transporter.sendMail({
+const sendWelcomeEmail =  (email, name) =>{
+     transporter.sendMail({
         from: 'harrell.bashir@gmail.com',
         to: email,
         subject: 'Test Email',
