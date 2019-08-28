@@ -1,6 +1,6 @@
-var nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer');
 
-var transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: process.env.NODEMAILER_USER,
@@ -8,18 +8,16 @@ var transporter = nodemailer.createTransport({
   }
 });
 
-const sendWelcomeEmail =  (email, name) =>{
+const sendWelcomeEmail = (email, name) =>{
      transporter.sendMail({
         from: 'harrell.bashir@gmail.com',
         to: email,
         subject: 'Test Email',
         text: `Hi ${name}, thank you for signing up. Let me know what you think`
-    }, function(error, info) {
-        if (error) {
+    },  function(error) {
+         if (error) {
             console.log(error);
-          } else {
-            console.log('Email sent: ' + info.response);
-          }
+          } 
     })
 
 }
@@ -30,11 +28,9 @@ const sendCancelationEmail = (email, name) => {
         to: email,
         subject: 'We are sorry to see you go!',
         text: `Thank you for using our service, ${name}. Please let us know what we can do to improve`
-    }, function(error, info){
+    }, function(error){
         if (error) {
           console.log(error);
-        } else {
-          console.log('Email sent: ' + info.response);
         }
       })
     }
