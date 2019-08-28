@@ -40,6 +40,7 @@ test('Should delete user task', async () => {
     const task = await Task.findById(taskOne._id)
     expect(task).toBeNull()
 })
+
 test('Should not delete tasks from other user', async () => {
     const response = await request(app)
         .delete(`/tasks/${taskOne._id}`)
